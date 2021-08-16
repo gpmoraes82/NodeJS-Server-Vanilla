@@ -36,7 +36,7 @@ function getHero(id,  cb) {
     //API Request handler
     http.request(Constants.urlOptions, function (res) {
 
-        //Var to recieve the json obj
+        //Var to receive the json obj
         var body = '';
 
         //Build the json obj
@@ -55,7 +55,7 @@ function getHero(id,  cb) {
                 marvelAttributions[0] = result.attributionText;
                 marvelAttributions[1] = result.attributionHTML;
 
-                //Setting up arries to display
+                //Setting up arrys to display
                 for (var i = 0; i < result.data.results.length; i++) {
                     heroId[i] = result.data.results[i].id;
                     heroName[i] = result.data.results[i].name;
@@ -83,7 +83,7 @@ function getHero(id,  cb) {
                 cb({ error: result.code });
             }
 
-            //callback to aquire data and send it to server
+            //callback to aquire data and send it to the server
             cb(null, result);
 
         });
