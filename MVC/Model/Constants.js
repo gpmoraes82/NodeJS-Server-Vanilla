@@ -1,4 +1,4 @@
-/* Constant values use for API*/
+/* Constant values used for API*/
 
 const privateKey = "bcbb0f6a64d55948cc81d41b9124f2592f32de1f";
 const publicKey = "3043d757764057aee3fd1a7b23153899";
