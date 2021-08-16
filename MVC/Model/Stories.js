@@ -22,7 +22,7 @@ var hash = crypto.createHash('md5').update(data).digest('hex');
 var result;
 
 
-//Data from API to control the request, most part for the lode more requests
+//Data from API to control the request, most part for the load more requests
 var controlStories = {
 
     offset: 0,
@@ -33,7 +33,7 @@ var controlStories = {
 };
 
 
-//Get the JOSN obj from the API to be parsed
+//Get the json obj from the API to be parsed
 function getStories(id, offset, cb) {
 
     //Reset the path
@@ -65,7 +65,7 @@ function getStories(id, offset, cb) {
                 controlStories ["total"] = result.data.total;
                 controlStories ["count"] = result.data.count;
 
-                //Setting up arries to display
+                //Setting up arrys to display
                 for (var i = 0; i < result.data.results.length; i++) {
 
                     storiesIds[i] = result.data.results[i].id;
@@ -92,7 +92,7 @@ function getStories(id, offset, cb) {
                 cb({ error: result.code });
             }
 
-            //callback to aquire data and send it to server
+            //callback to aquire data and send it to the server
             cb(null, result);
             
         });
