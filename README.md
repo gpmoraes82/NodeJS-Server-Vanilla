@@ -6,4 +6,4 @@ Technical job test <br/>
   
   To download Node.js: https://nodejs.org/en/ <br/>
   To RUN the server, go to MVC/Control file execute the command: <b>node ./server.js</b>
-  To access the site onpen the local host: <b> http://localhost:8080/</b>
+  To ACCESS the site, open the address <b> http://localhost:8080/ </b> in a web browser.
