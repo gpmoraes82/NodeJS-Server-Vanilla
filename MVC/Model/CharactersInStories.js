@@ -23,7 +23,7 @@ var hash = crypto.createHash('md5').update(data).digest('hex');
 var result;
 
 
-//Data from API to control the request, most part for the lode more requests
+//Data from API to control the request, most part for the load more requests
 var controlCIStories = {
 
     offset: 0,
@@ -45,7 +45,7 @@ function getCharactersInStories(id, offset, cb){ ///REVISAR OFFSET
     //API Request handler
     http.request(Constants.urlOptions, function (res){
 
-        //Var to recieve the json obj
+        //Var to receive the json obj
         var body = '';
 
         //Build the json obj
@@ -64,13 +64,13 @@ function getCharactersInStories(id, offset, cb){ ///REVISAR OFFSET
                 marvelAttributions[0] = result.attributionText;
                 marvelAttributions[1] = result.attributionHTML;
 
-                //Get the data controlers, most for offset
+                //Get the data controllers, most for offset
                 controlCIStories ["offset"] = result.data.offset;
                 controlCIStories ["limit"] = result.data.limit;
                 controlCIStories ["total"] = result.data.total;
                 controlCIStories ["count"] = result.data.count;
 
-                //Setting up arries to display
+                //Setting up arrys to display
                 for(var i=0;i<result.data.results.length;i++) {
 
                     storiesCharactersIds[i] = result.data.results[i].id;
@@ -92,7 +92,7 @@ function getCharactersInStories(id, offset, cb){ ///REVISAR OFFSET
                 cb({error:result.code});
             }
             
-            //callback to aquire data and send it to server
+            //callback to aquire data and send it to the server
             cb(null, result);
 
         });
