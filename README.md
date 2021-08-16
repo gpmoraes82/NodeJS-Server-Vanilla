@@ -4,5 +4,5 @@ Technical job test <br/>
   Node.js v14.15.4 or higher <br/>
   JavaScript, AJAX, HTML
   
-  To download Node.js -> https://nodejs.org/en/ <br/>
-  To RUN the server, go to MVC/Control file execute the command node <b>./server.js</b>
+  To download Node.js: https://nodejs.org/en/ <br/>
+  To RUN the server, go to MVC/Control file execute the command: <b>node ./server.js</b>
