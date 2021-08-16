@@ -1,0 +1,87 @@
+
+/* general */
+
+    body {
+        margin:50px;
+        padding:0px;
+        background-color:#fff;
+    }
+
+    a {
+        text-decoration:none;
+    }
+
+    p {
+        font-family:Verdana, sans-serif;
+        font-size:16px;
+    }
+
+/* index */
+
+    p.charactersThumbs {
+        display:inline-block;
+        margin:20px 40px 20px 0px;
+        border:10px solid #fff;
+        background-color:#fff;
+        box-shadow:0px 0px 5px 0px #000;
+    }
+
+    p.charactersThumbs span {
+        display:inline-block;
+        max-width:200px;
+    }
+
+    p.charactersDescription {
+        display:inline-block;
+        vertical-align:top;
+        margin-top:20px;
+        width:400px;
+    }
+
+    p.attribution {
+        text-align:center;
+    }
+
+    img.charactersThumbs {
+        width:100%;
+        height:100%;
+        max-width:200px;
+        max-height:200px;
+    }
+
+/* case hero */
+
+    h1.title {
+        font:bold 26px Verdana, sans-serif ;
+    }
+
+    img.heroimage {
+        width:100%;
+        height:100%;
+        max-width:200px;
+        max-height:200px;
+        border:10px solid #fff;
+        box-shadow:0px 0px 5px 0px #999;
+    }
+
+    p.marvelattr {
+        margin-bottom:20px;
+        font-style:italic;
+        font-size:14px;
+    }
+
+    button.btn {
+        margin-top:10px;
+        font-size:14px;
+        color:#111;
+        padding:7px 15px 7px 15px;
+        background:#ccc;
+        border:1px solid #666;
+        border-radius:2px;
+    }
+
+    button.btn:hover {
+        color:#000;
+        background:#aaa;
+        border-color:#333;
+    }
