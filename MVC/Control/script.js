@@ -1,5 +1,4 @@
-
-//hadler to request and recieve data from client side 
+//handler to request and receive data from client side 
 function ajaxRequest( reqType, endDiv ) {
 
     document.getElementById( endDiv ).innerHTML = "<p>Loading ...</p>";
