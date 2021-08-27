@@ -10,36 +10,41 @@ console.log(" Changed working dir: " + process.cwd());
 
 
 //Requires
-var http = require("http");
-var fs = require("fs");
-var url = require("url");
-var Characters = require("../Model/Characters.js");
-var Stories = require("../Model/Stories.js");
-var CharactersInStories = require("../Model/CharactersInStories.js");
-var Hero = require("../Model/Hero.js");
+const http = require("http");
+const fs = require("fs");
+const url = require("url");
+const Characters = require("../Model/Characters.js");
+const Stories = require("../Model/Stories.js");
+const CharactersInStories = require("../Model/CharactersInStories.js");
+const Hero = require("../Model/Hero.js");
+
 
 //offset holder to increment displayed list
 var newOffset = 0;
 
-//data to be sent to HTML
+//data to be send to HTML
 var response = "";
 
 //Data from ajax request
 var reqQuery = "";
 
-//Path/route from ajax request to be handled
+//Path/rout from ajax request to be handled
 var reqPathname = "";
 
 console.log("Server started.");
 
-
 //for demonstration purposes only, to avoid file server installation
 http.createServer(function (req, res) {
 
-  switch (req.url) {
+  //Aquire route from the ajax
+  reqPathname = url.parse(req.url, true).pathname;
+
+  
+  //switch (req.url) {
+  switch (reqPathname) {
 
     //-------------------------------
-    //Handle the file server, the files show the view to be assembled
+    //Handle the file server, the files show the the view to be assembled
     case "/":
       fs.readFile("View/index.html", function (err, data) {
         res.writeHead(200, { "Content-Type": "text/html" });
@@ -65,17 +70,12 @@ http.createServer(function (req, res) {
       break;
       //-------------------------------
 
-      
-    //Defaul route to all characters
-    default:
-
-      //Acquire data and route from the ajax
-      reqQuery = url.parse(req.url, true).query;
-      reqPathname = url.parse(req.url, true).pathname;
-
 
       //Show ALL characters, using 20 number as offset
-      if (reqPathname == "/characters") {
+      case "/characters":
+
+        //Aquire data from the ajax
+        reqQuery = url.parse(req.url, true).query;
 
         Characters.getCharacters(reqQuery.offset, function (err, result) {
 
@@ -115,11 +115,13 @@ http.createServer(function (req, res) {
 
         });
 
+      break;
 
       //Route to ALL stories from a character
-      } else if (reqPathname == "/stories") {
+      case "/stories":
 
-        res.writeHead(200, { "Content-Type": "text/html" });
+        //Aquire data from the ajax
+        reqQuery = url.parse(req.url, true).query;
 
         //Get data from the selected charater for the header for navegability
         Hero.getHero(reqQuery.id, function (err, result) {
@@ -184,11 +186,13 @@ http.createServer(function (req, res) {
 
         });
 
+      break;
 
       //Route to characters from a story
-      } else if (reqPathname == "/charactersInStories") {
+      case  "/charactersInStories":
 
-        res.writeHead(200, { "Content-Type": "text/html" });
+        //Aquire data from the ajax
+        reqQuery = url.parse(req.url, true).query;
 
         //Get the list of character, offset to 20 at a time 
         CharactersInStories.getCharactersInStories(reqQuery.id, reqQuery.offset, function (err, result) {
@@ -212,7 +216,7 @@ http.createServer(function (req, res) {
             }
 
 
-            //Display the list of stories from a character, by clicking on a charater the exploration can be started, and not needing to back to the beginning
+            //Display the list of stories from a character, by clicking on a charater the xploration can be started, and not needing to back for the beginning
             for (var i = 0; i < CharactersInStories.controlCIStories.count; i++) {
 
               response += `<a href="javascript:void(0);" onclick="ajaxRequest('stories?id=` + CharactersInStories.storiesCharactersIds[i]  + `&offset=0&charIndex=` + i + `', 'result0');"> <p class='charactersThumbs'> <img class='charactersThumbs' src="` + CharactersInStories.storiesCharactersThumbunails[i] + `"/> <br/> <span>` + CharactersInStories.storiesCharactersNames[i] + `<span> </p> </a>`;
@@ -232,11 +236,14 @@ http.createServer(function (req, res) {
 
         });
 
-      }
+    break;
 
+      
+    //Defaul route to all characters
+    default :
+     
     break;
 
   }
 //sever listener port
 }).listen(8080);
-
